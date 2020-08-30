@@ -45,7 +45,7 @@ class Momentum(Optimizer):
 
         learning_rate (float|Tensor|LearningRateDecay, optional): The learning rate used to update ``Parameter``.
             It can be a float value, a ``Tensor`` with a float type or a LearningRateDecay. The default value is 0.001.
-        momentum (float): Momentum factor. The default value is 0.9.
+        momentum (float, optional): Momentum factor. The default value is 0.9.
         parameters (list, optional): List of ``Tensor`` to update to minimize ``loss``. \
             This parameter is required in dygraph mode. \
             The default value is None in static mode, at this time all parameters will be updated.
