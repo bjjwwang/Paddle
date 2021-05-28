@@ -175,8 +175,8 @@ static void UniqueFlattendCUDATensor(const framework::ExecutionContext& context,
       sorted_indices->mutable_data<IndexT>(context.GetPlace());
   thrust::sequence(thrust::device, sorted_indices_data,
                    sorted_indices_data + num_input);
-  thrust::sort_by_key(thrust::device, in_data_hat, in_data_hat + num_input,
-                      sorted_indices_data);
+  //thrust::sort_by_key(thrust::device, in_data_hat, in_data_hat + num_input,
+  //                    sorted_indices_data);
 
   // 1. Calculate op result: 'out'
   Tensor range;
@@ -335,8 +335,8 @@ static void UniqueDimsCUDATensor(const framework::ExecutionContext& context,
   // Init index and sort
   thrust::sequence(thrust::device, sorted_indices_data,
                    sorted_indices_data + row);
-  thrust::sort(thrust::device, sorted_indices_data, sorted_indices_data + row,
-               LessThan<InT>(col, in_trans_data));
+  //thrust::sort(thrust::device, sorted_indices_data, sorted_indices_data + row,
+  //             LessThan<InT>(col, in_trans_data));
   ComputeUniqueDims<InT, IndexT>(
       context, sorted_indices, sorted_indices_data, out, return_index,
       return_inverse, return_counts, BinaryEqual<InT>(col, in_trans_data),
